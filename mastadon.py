@@ -15,10 +15,10 @@ def scroll_to_next_tweet(last_tweet):
         tweets = driver.find_elements(By.CLASS_NAME, "status__content__text")
         if last_tweet == tweets[0]:
             print("No new tweets found. Scrolling.")
-            driver.execute_script("window.scrollBy(0, 10000);")
+            driver.execute_script("window.scrollBy(0, 100);")
             time.sleep(2)
         else:
-            driver.execute_script("window.scrollBy(0, 30000);")
+            driver.execute_script("window.scrollBy(0, 3000);")
             break
     
     last_tweet = tweets[-1]
@@ -51,7 +51,7 @@ url = base_url.format(page_number)
 driver.get(url)
 last_tweet = None
 
-while page_number<10000000:
+while page_number<1000:
     try:
         # Check if the page exists
         WebDriverWait(driver, 15).until(EC.visibility_of_element_located((By.CLASS_NAME, "icon-button__counter")))
